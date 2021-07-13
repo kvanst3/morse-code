@@ -1,3 +1,6 @@
+import os
+import time
+
 MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
                     'C':'-.-.', 'D':'-..', 'E':'.',
                     'F':'..-.', 'G':'--.', 'H':'....',
@@ -24,7 +27,12 @@ def convert(s):
 def encrypt(message):
     result = []
     for char in message:
-        result.extend([MORSE_CODE_DICT[char.upper()], ' '])
+        try:
+            result.extend([MORSE_CODE_DICT[char.upper()], ' '])
+        except KeyError:
+            os.system('clear')
+            print('Invalid Key. Please refer to the Morse Guide for accepted characters. Thank you.')
+            game_on()
     return convert(result)
 
 
@@ -36,8 +44,13 @@ def decrypt(message):
     for word in sentence:
         signals = word.strip().split(' ')
         for s in signals:
-            val_idx = val_list.index(s)
-            result.append(key_list[val_idx])
+            try:
+                val_idx = val_list.index(s)
+                result.append(key_list[val_idx])
+            except ValueError:
+                os.system('clear')
+                print('Invalid Key. Please refer to the Morse Guide for accepted characters. Thank you.')
+                game_on()
         result.append(' ')
     return convert(result)
 
