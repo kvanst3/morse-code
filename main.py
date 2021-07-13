@@ -57,15 +57,18 @@ def decrypt(message):
 
 def game_on():
     usr_choice = input('1. Encode\n2. Decode\n3. Exit\n\n')
+    os.system('clear')
     if int(usr_choice) == 1:
         message = input('Message to encode:\n')
+        os.system('clear')
         encrypted_message = encrypt(message)
-        print(f'Result:\n{encrypted_message}')
+        print(f'Result:\n{encrypted_message}\n\n')
         game_on()
     elif int(usr_choice) == 2:
         code = input('Message to decode:\n')
+        os.system('clear')
         decrypted_message = decrypt(code)
-        print(f'Result:\n{decrypted_message}')
+        print(f'Result:\n{decrypted_message}\n\n')
         game_on()
     else:
         print("--. --- --- -..   -... -.-- . ")
