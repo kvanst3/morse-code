@@ -42,17 +42,20 @@ def decrypt(message):
     return convert(result)
 
 
-game_on = True
-
-while game_on:
+def game_on():
     usr_choice = input('1. Encode\n2. Decode\n3. Exit\n\n')
     if int(usr_choice) == 1:
         message = input('Message to encode:\n')
         encrypted_message = encrypt(message)
         print(f'Result:\n{encrypted_message}')
+        game_on()
     elif int(usr_choice) == 2:
         code = input('Message to decode:\n')
         decrypted_message = decrypt(code)
         print(f'Result:\n{decrypted_message}')
+        game_on()
     else:
-        game_on = False
+        print("--. --- --- -..   -... -.-- . ")
+
+
+game_on()
