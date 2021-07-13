@@ -12,25 +12,25 @@ MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
                     '7':'--...', '8':'---..', '9':'----.',
                     '0':'-----', ', ':'--..--', '.':'.-.-.-',
                     '?':'..--..', '/':'-..-.', '-':'-....-',
-                    '(':'-.--.', ')':'-.--.-', ' ': ' '}
+                    '(':'-.--.', ')':'-.--.-', ' ': '*'}
 
 
 def convert(s):
     new_str = ""
-    new_str.join(s)
+    new_str = new_str.join(s)
     return new_str
 
 
 def encrypt(message):
     result = []
     for char in message:
-        result.append(MORSE_CODE_DICT[char.upper()])
+        result.extend([MORSE_CODE_DICT[char.upper()], ' '])
     return convert(result)
 
 
 def decrypt(message):
-    key_list = [MORSE_CODE_DICT.keys()]
-    val_list = [MORSE_CODE_DICT.values()]
+    key_list = list(MORSE_CODE_DICT.keys())
+    val_list = list(MORSE_CODE_DICT.values())
     result = []
     signals = message.split(' ')
     for i in signals:
